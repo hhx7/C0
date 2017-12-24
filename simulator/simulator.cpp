@@ -2,7 +2,7 @@
 // Created by pi on 17-12-10.
 //
 #include "simulator.h"
-#include <iostream>
+
 simulator::simulator(std::vector<instruction> &instructions)
 :instructions_(instructions),
  current_instruction_pos_(0),
@@ -14,7 +14,8 @@ simulator::simulator(std::vector<instruction> &instructions)
  */
 void simulator::run()
 {
-    std::cout<<("start C0\n");
+    std::cout << std::endl << "------------------------------Start Interpreting Program------------------------"
+              << std::endl;
     int top_value=0,second_top_value=0,read_value=0;
     unsigned long top_pointer=0;
     int parent_base_address=0;

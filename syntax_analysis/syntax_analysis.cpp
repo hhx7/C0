@@ -8,7 +8,7 @@ void syntax_analysis::run(){
 
     /*auto x=next_token();
     while (x) {
-        std::cout<<(int)x->get_name()<<" ";
+        std::cout<<x->get_name()<<" ";
         auto& attribute=x->attribute_;
         std::visit([](auto& val){
             using T=std::remove_cv_t <std::remove_reference_t <decltype(val)>>;
@@ -57,7 +57,7 @@ void syntax_analysis::getsym(){
         return;
 
     sym_=current_token_->get_name();
-    std::cout<<'<'<<(int)sym_<<",";
+    std::cout << '<' << sym_ << ",";
     auto& attribute=current_token_->attribute_;
     std::visit([](auto& val){
         using T=std::remove_cv_t <std::remove_reference_t <decltype(val)>>;
@@ -65,14 +65,17 @@ void syntax_analysis::getsym(){
             std::cout<<val;
         }else if constexpr (std::is_same_v<T,char>){
             std::cout<<val;
+        } else if constexpr (std::is_same_v<T, int>) {
+            std::cout << val;
         }
     },attribute);
 
-    std::cout<<'>'<<std::endl;
+    std::cout << '>' << "\t";
 
 }
 void syntax_analysis::error(const char msg[]){
-    throw std::runtime_error(msg);
+    ///throw std::runtime_error(msg);
+    std::cout << std::endl << msg << std::endl;
 }
 bool syntax_analysis::accept(Token_name token_name){
     if(token_name==sym_){
@@ -276,7 +279,7 @@ auto syntax_analysis::function_define()->std::shared_ptr<abstract_node<symbol::T
         error("function body: syntax error");
     }
 
-    return node_factory::make_family(Token_name::func_define,ret_type,sub_proc);
+    return node_factory::make_family(Token_name::func_def, ret_type, sub_proc);
 }
 
 auto syntax_analysis::main_function()->std::shared_ptr<abstract_node<symbol::Token_name>>{
@@ -591,6 +594,7 @@ auto syntax_analysis::term()->std::shared_ptr<abstract_node<symbol::Token_name>>
     factor_=factor();
     while(sym_==Token_name::times || sym_==Token_name::slash){
         kid2=node_factory::make_node(sym_);
+        auto sym_temp = sym_;
         getsym();
         kid3=factor();
         if(kid_temp== nullptr){
@@ -599,9 +603,9 @@ auto syntax_analysis::term()->std::shared_ptr<abstract_node<symbol::Token_name>>
             kid_temp=kid_temp->make_siblings(kid2)->make_siblings(kid3);
         }
 
-        if(sym_==Token_name::times){
+        if (sym_temp == Token_name::times) {
             code_generator_.emit_instruction(Operation_code::MUL);
-        }else if(sym_==Token_name::slash){
+        } else if (sym_temp == Token_name::slash) {
             code_generator_.emit_instruction(Operation_code::DIV);
         }
     }

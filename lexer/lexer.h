@@ -5,7 +5,7 @@
 #ifndef C0_LEXER_H
 #define C0_LEXER_H
 
-#include "../constants/symbol.h"
+
 #include "token.h"
 #include "../symbol_table/symbol_table.h"
 #include <memory>

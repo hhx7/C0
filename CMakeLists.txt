@@ -3,7 +3,7 @@ project(C0)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES main.cpp constants/symbol.h symbol_table/symbol_table.h lexer/token.h lexer/lexer.h lexer/lexer.cpp syntax_analysis/syntax_analysis.h syntax_analysis/syntax_analysis.cpp interface/token_stream.h simulator/code_generator/code_generator.h simulator/instruction.h simulator/code_generator/code_generator.cpp symbol_table/symbol_attribute.h symbol_table/symbol_table.cpp symbol_table/symbol_attribute.cpp simulator/simulator.h simulator/simulator.cpp constants/operation_code.h simulator/stack.h AST/node_factory.h AST/abstract_node.h constants/function.h)
+set(SOURCE_FILES main.cpp constants/symbol.h symbol_table/symbol_table.h lexer/token.h lexer/lexer.h lexer/lexer.cpp syntax_analysis/syntax_analysis.h syntax_analysis/syntax_analysis.cpp interface/token_stream.h simulator/code_generator/code_generator.h simulator/instruction.h simulator/code_generator/code_generator.cpp symbol_table/symbol_attribute.h symbol_table/symbol_table.cpp symbol_table/symbol_attribute.cpp simulator/simulator.h simulator/simulator.cpp constants/operation_code.h simulator/stack.h AST/node_factory.h AST/abstract_node.h constants/function.h constants/constants.h constants/constants.cpp)
 
 add_executable(C0 ${SOURCE_FILES})
 set(BOOST_ROOT "/home/pi/C++/include/boost_1_65_0")

@@ -5,12 +5,12 @@
 #ifndef C0_CODE_GENERATOR_H
 #define C0_CODE_GENERATOR_H
 
+#include "../../lexer/token.h"
+#include "../instruction.h"
 #include <string>
 #include <vector>
 #include <memory>
-#include "../../constants/operation_code.h"
-#include "../../lexer/token.h"
-#include "../instruction.h"
+
 
 class code_generator : virtual private operation_code,virtual private symbol{
 public:

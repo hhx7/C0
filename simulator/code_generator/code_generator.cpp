@@ -70,11 +70,13 @@ void code_generator::complete_instruction(unsigned code_pos, unsigned right_op_n
 void code_generator::print()const{
     using namespace std;
     const int space_size=20;
-    cout<<endl;
-    cout<<left<<setw(10)<<"pos"<<setw(space_size)<<"Operation_code"<<setw(space_size)<<"left_operation_num"<<setw(space_size)<<"right_operation_num"<<endl;
+    cout << endl << "--------------------------------Target Code Generation----------------------------" << std::endl;
+    cout << left << setw(10) << "pos" << setw(space_size) << "Op_code" << setw(space_size) << "lop_num"
+         << setw(space_size) << "rop_num" << endl;
     int i=0;
     for(auto code:codes_){
-        cout<<setw(10)<<i++<<setw(space_size)<<(int)code.operation_code<<setw(space_size)<<code.left_operation_num<<setw(space_size)<<code.right_operation_num<<endl;
+        cout << setw(10) << i++ << setw(space_size) << code.operation_code << setw(space_size)
+             << code.left_operation_num << setw(space_size) << code.right_operation_num << endl;
     }
 }
 

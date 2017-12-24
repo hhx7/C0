@@ -5,7 +5,7 @@
 #ifndef C0_SYMBOL_TABLE_ITEM_H
 #define C0_SYMBOL_TABLE_ITEM_H
 
-#include "../constants/symbol.h"
+#include "../constants/constants.h"
 #include "../constants/function.h"
 #include <memory>
 #include <variant>

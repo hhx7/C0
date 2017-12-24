@@ -5,10 +5,8 @@
 #ifndef C0_SYNTAX_ANLYSIS_H
 #define C0_SYNTAX_ANLYSIS_H
 
-#include "../constants/symbol.h"
 #include "../lexer/token.h"
 #include "../lexer/lexer.h"
-#include "../constants/operation_code.h"
 #include "../simulator/code_generator/code_generator.h"
 
 #include "../AST/abstract_node.h"

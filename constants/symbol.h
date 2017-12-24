@@ -17,7 +17,7 @@ struct  symbol{
         voidsym,     mainsym,   intsym,     call,       exp,
         term,        factor,    assign,      loop,      stmt,
 
-        stmt_seq,   sub_proc,   func_define, ident_def, proc,
+        stmt_seq, sub_proc, func_def, ident_def, proc,
         func_call_stmt
     };
     enum class Symbol_type{

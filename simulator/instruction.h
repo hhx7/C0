@@ -6,7 +6,7 @@
 #define C0_NATIVE_CODE_H
 
 #include <string>
-#include "../constants/operation_code.h"
+#include "../constants/constants.h"
 
 class instruction : virtual public operation_code{
 public:

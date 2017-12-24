@@ -8,6 +8,7 @@
 lexer::lexer(const std::string& file_name,symbol_table& st):input_stream_(file_name,std::ios::in),symbol_table_(st){
     input_stream_>>std::noskipws;
     last_char_=' ';
+    std::cout << std::endl << "-------------------------Start Compiling-------------------------" << std::endl;
 }
 
 
@@ -122,6 +123,7 @@ std::shared_ptr<token> lexer::next_token(){
 
     current_token_= std::make_shared<token>(0,0,Token_name::nul);
     while(is_skipper_symbol()){
+        std::cout << last_char_;
         next_char();
     }
     if(isdigit(last_char_)){

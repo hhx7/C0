@@ -126,13 +126,17 @@ std::shared_ptr<symbol_attribute> symbol_table::enter_symbol(std::shared_ptr<sym
 }
 
 void symbol_table::print()const{
+    std::cout << std::endl << "-----------------------------------Print Symbol Table-------------------------------"
+              << std::endl;
     const int space_size=12;
     std::cout<<std::left<<std::setw(space_size)<<"name"<<std::setw(space_size)<<"type"<<std::setw(space_size)<<"var_pos"
              <<std::setw(space_size)<<"return_type"<<std::setw(space_size)<<"func_size"<<std::setw(space_size)<<"depth"<<std::endl;
     for(auto beg=symbol_table_.begin();beg!=symbol_table_.end();++beg){
         auto sym=beg->second;
-        std::cout<<std::setw(space_size)<<sym->get_name()<<std::setw(space_size)<<(int)sym->get_symbol_type()<<std::setw(space_size)<<sym->get_var_pos()
-                 <<std::setw(space_size)<<(int)sym->get_return_type()<<std::setw(space_size)<<sym->get_func_size()<<std::setw(space_size)<<sym->get_depth()<<std::endl;
+        std::cout << std::setw(space_size) << sym->get_name() << std::setw(space_size) << sym->get_symbol_type()
+                  << std::setw(space_size) << sym->get_var_pos()
+                  << std::setw(space_size) << sym->get_return_type() << std::setw(space_size) << sym->get_func_size()
+                  << std::setw(space_size) << sym->get_depth() << std::endl;
     }
 }
 

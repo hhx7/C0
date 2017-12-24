@@ -5,7 +5,6 @@
 #ifndef C0_TOKEN_H
 #define C0_TOKEN_H
 
-#include "../constants/symbol.h"
 #include "../symbol_table/symbol_table.h"
 
 #include <variant>
