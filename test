@@ -1,0 +1,15 @@
+
+int a,b,c;
+
+
+int test2(){
+
+    a=a-1;
+    return (a);
+}
+void main(){
+    scanf(a);
+    while(test2()){
+        printf(a);
+    }
+}

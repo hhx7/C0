@@ -1,4 +1,5 @@
 #include "syntax_analysis/syntax_analysis.h"
+#include "simulator/simulator.h"
 #include <queue>
 
 void walk(std::queue<std::shared_ptr<abstract_node<symbol::Token_name >>>& q){
@@ -32,14 +33,20 @@ void f1(std::shared_ptr<abstract_node<symbol::Token_name >> h){
 }
 
 int main() {
-    std::string filename="/home/pi/C++/C0/lexer/test";
+    std::string filename="/home/pi/C++/C0/test";
     symbol_table st;
-    syntax_analysis syntax_analysis1(filename,st);
+    std::vector<instruction> codes;
+    code_generator cg(st,codes);
+    syntax_analysis syntax_analysis1(filename,cg,st);
     syntax_analysis1.run();
     auto head=syntax_analysis1.root_->get_leftmost_child();
     std::queue<decltype(head)> q;
     q.push(head);
-   f1(head);
-
+    f1(head);
+    std::cout<<std::endl;
+    st.print();
+    cg.print();
+    simulator simulator1(codes);
+    simulator1.run();
     return 0;
 }

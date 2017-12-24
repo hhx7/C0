@@ -20,9 +20,10 @@
 #include <any>
 
 
-class syntax_analysis : virtual public symbol,virtual public operation_code{
+class syntax_analysis : virtual public symbol,virtual public operation_code,virtual public function{
 public:
-    syntax_analysis(const std::string& filename,symbol_table& st):symbol_table_(st),lexer_(filename,st){
+    syntax_analysis(const std::string& filename,code_generator& cg,symbol_table& st):
+            symbol_table_(st),lexer_(filename,st),code_generator_(cg){
         current_token_temp_pos_=token_temp_.begin();
         root_=node_factory::make_node(Token_name::nul);
     }
@@ -84,6 +85,6 @@ private:
     lexer lexer_;
     symbol_table& symbol_table_;
 
-   // code_generator code_generator_;
+    code_generator& code_generator_;
 };
 #endif //C0_SYNTAX_ANLYSIS_H

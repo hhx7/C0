@@ -85,7 +85,7 @@ void lexer::get_identifier_or_keyword_token() {
         next_char();
     }
 
-    insert_to_symbol_table(lexeme,Symbol_type::variable);
+    handler_indent(lexeme, Symbol_type::variable);
 }
 
 void lexer::get_literal_token(){

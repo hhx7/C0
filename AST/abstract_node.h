@@ -16,6 +16,8 @@ class abstract_node : public std::enable_shared_from_this<abstract_node<DataType
 public:
 
     abstract_node()= default;
+    abstract_node(Operation_code);
+    abstract_node(DataType data);
     abstract_node(Operation_code ,DataType data);
     abstract_node(Operation_code ,DataType data,std::shared_ptr<abstract_node<DataType>> parent);
     abstract_node(Operation_code ,DataType data,std::shared_ptr<abstract_node<DataType>> parent,std::shared_ptr<abstract_node<DataType>> leftmost_brother);
@@ -41,12 +43,12 @@ public:
 private:
     Operation_code type_;
 public:
-    void setType_(Operation_code type_);
+    void setType(operation_code::Operation_code type_);
 
 private:
     DataType data_;
 public:
-    Operation_code getType_() const;
+    Operation_code getType() const;
 
 private:
     std::shared_ptr<abstract_node<DataType>> parent_;
@@ -175,17 +177,28 @@ inline void abstract_node<DataType>::set_data(DataType data) {
 }
 
 template<typename DataType>
-abstract_node<DataType>::abstract_node(DataType data):data_(data) {
+abstract_node<DataType>::abstract_node(Operation_code code,DataType data):type_(code),data_(data) {
+
+}
+
+
+template<typename DataType>
+abstract_node<DataType>::abstract_node(Operation_code code):type_(code) {
 
 }
 
 template<typename DataType>
-void abstract_node<DataType>::setType_(operation_code::Operation_code type_) {
+abstract_node<DataType>::abstract_node(DataType data):data_(data) {
+    type_=Operation_code::NUL;
+}
+
+template<typename DataType>
+void abstract_node<DataType>::setType(operation_code::Operation_code type_) {
     abstract_node::type_ = type_;
 }
 
 template<typename DataType>
-operation_code::Operation_code abstract_node<DataType>::getType_() const {
+operation_code::Operation_code abstract_node<DataType>::getType() const {
     return type_;
 }
 
