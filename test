@@ -8,8 +8,16 @@ int test2(){
     return (a);
 }
 void main(){
+    int f;
     scanf(a);
     while(test2()){
-        printf(a);
+    if(a-2){
+        b=0;
+        scanf(f);
+        printf(f+1);
+    }else{
+        printf(10000);
+    }
+
     }
 }

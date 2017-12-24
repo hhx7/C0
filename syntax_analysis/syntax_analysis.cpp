@@ -409,8 +409,8 @@ auto syntax_analysis::condition_statement()->std::shared_ptr<abstract_node<symbo
     if(is_the_beginning_of(Non_terminator::statement)){
         if_brunch=statement();
 
-        if(sym_==Token_name::elsesym){
-            jpc_code_pos2=code_generator_.emit_instruction(Operation_code::JPC);
+        if (sym_ == Token_name::elsesym, accept(sym_)) {
+            jpc_code_pos2 = code_generator_.emit_instruction(Operation_code::JMP);
             code_generator_.complete_instruction(jpc_code_pos1);
             else_brunch=statement();
             code_generator_.complete_instruction(jpc_code_pos2);
