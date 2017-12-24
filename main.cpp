@@ -2,33 +2,27 @@
 #include "simulator/simulator.h"
 #include <queue>
 
-void dfs(std::queue<std::shared_ptr<abstract_node<symbol::Token_name >>> &q) {
+void bfs(std::queue<std::shared_ptr<abstract_node<symbol::Token_name >>> &q) {
+    std::cout << std::endl << "----------------------------Start Printing Abstract Syntax Tree-------------------"
+              << std::endl;
+    std::queue<std::shared_ptr<abstract_node<symbol::Token_name >>> level_temp;
     while(!q.empty()){
         auto n=q.front(); q.pop();
         auto d=n->get_data();
-        if(d==symbol::Token_name::nul)
-            std::cout<<std::endl;
-        else
-            std::cout << d << " " << std::flush;
+
+        std::cout << d << " " << std::flush;
         auto  h=n->get_leftmost_child();
         while (h!= nullptr){
-            q.push(h);
+            level_temp.push(h);
             h=h->get_right_brother();
         }
-
-    }
-}
-
-void bfs(std::shared_ptr<abstract_node<symbol::Token_name >> h) {
-    if(h!= nullptr){
-        std::cout << h->get_data() << " " << std::flush;
-        auto q=h->get_leftmost_child();
-        while (q!= nullptr){
-            bfs(q);
-            q=q->get_right_brother();
+        if (q.empty()) {
+            std::cout << std::endl;
+            q = level_temp;
+            while (!level_temp.empty()) {
+                level_temp.pop();
+            }
         }
-    }else{
-        return;
     }
 }
 
@@ -42,7 +36,7 @@ int main() {
     auto head=syntax_analysis1.root_->get_leftmost_child();
     std::queue<decltype(head)> q;
     q.push(head);
-    bfs(head);
+    bfs(q);
     std::cout<<std::endl;
     st.print();
     cg.print();
